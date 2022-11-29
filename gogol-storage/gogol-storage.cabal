@@ -99,3 +99,5 @@ library
     build-depends:
           gogol-core == 0.5.0.*
         , base       >= 4.7 && < 5
+        , aeson
+        , unordered-containers

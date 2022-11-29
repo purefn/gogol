@@ -19,7 +19,9 @@ module Network.Google.BigQuery.Types.Product where
 
 import Network.Google.BigQuery.Types.Sum
 import Network.Google.Prelude
-
+import Data.Aeson.Key
+import Data.Aeson.KeyMap
+import Data.HashMap.Strict 
 --
 -- /See:/ 'modelReference' smart constructor.
 data ModelReference =
@@ -2134,7 +2136,7 @@ instance FromJSON JobConfigurationLabels where
         parseJSON
           = withObject "JobConfigurationLabels"
               (\ o ->
-                 JobConfigurationLabels' <$> (parseJSONObject o))
+                 JobConfigurationLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON JobConfigurationLabels where
         toJSON = toJSON . _jclAddtional
@@ -2430,7 +2432,7 @@ mlAddtional
 instance FromJSON ModelLabels where
         parseJSON
           = withObject "ModelLabels"
-              (\ o -> ModelLabels' <$> (parseJSONObject o))
+              (\ o -> ModelLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON ModelLabels where
         toJSON = toJSON . _mlAddtional
@@ -5834,7 +5836,7 @@ qrlAddtional
 instance FromJSON QueryRequestLabels where
         parseJSON
           = withObject "QueryRequestLabels"
-              (\ o -> QueryRequestLabels' <$> (parseJSONObject o))
+              (\ o -> QueryRequestLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON QueryRequestLabels where
         toJSON = toJSON . _qrlAddtional
@@ -8771,7 +8773,7 @@ instance FromJSON QueryParameterValueStructValues
           = withObject "QueryParameterValueStructValues"
               (\ o ->
                  QueryParameterValueStructValues' <$>
-                   (parseJSONObject o))
+                   (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON QueryParameterValueStructValues where
         toJSON = toJSON . _qpvsvAddtional
@@ -8809,7 +8811,7 @@ dslAddtional
 instance FromJSON DataSetLabels where
         parseJSON
           = withObject "DataSetLabels"
-              (\ o -> DataSetLabels' <$> (parseJSONObject o))
+              (\ o -> DataSetLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON DataSetLabels where
         toJSON = toJSON . _dslAddtional
@@ -10070,7 +10072,7 @@ joAddtional
 instance FromJSON JSONObject where
         parseJSON
           = withObject "JSONObject"
-              (\ o -> JSONObject' <$> (parseJSONObject o))
+              (\ o -> JSONObject' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON JSONObject where
         toJSON = toJSON . _joAddtional
@@ -10742,7 +10744,7 @@ instance FromJSON
           = withObject "JobConfigurationQueryTableDefinitions"
               (\ o ->
                  JobConfigurationQueryTableDefinitions' <$>
-                   (parseJSONObject o))
+                   (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON JobConfigurationQueryTableDefinitions
          where
@@ -12124,7 +12126,7 @@ instance FromJSON TrainingOptionsLabelClassWeights
           = withObject "TrainingOptionsLabelClassWeights"
               (\ o ->
                  TrainingOptionsLabelClassWeights' <$>
-                   (parseJSONObject o))
+                   (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON TrainingOptionsLabelClassWeights
          where
@@ -12165,7 +12167,7 @@ tlAddtional
 instance FromJSON TableLabels where
         parseJSON
           = withObject "TableLabels"
-              (\ o -> TableLabels' <$> (parseJSONObject o))
+              (\ o -> TableLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON TableLabels where
         toJSON = toJSON . _tlAddtional
@@ -13764,7 +13766,7 @@ instance FromJSON DestinationTablePropertiesLabels
           = withObject "DestinationTablePropertiesLabels"
               (\ o ->
                  DestinationTablePropertiesLabels' <$>
-                   (parseJSONObject o))
+                   (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON DestinationTablePropertiesLabels
          where
@@ -14152,7 +14154,7 @@ instance FromJSON DataSetListDataSetsItemLabels where
           = withObject "DataSetListDataSetsItemLabels"
               (\ o ->
                  DataSetListDataSetsItemLabels' <$>
-                   (parseJSONObject o))
+                   (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON DataSetListDataSetsItemLabels where
         toJSON = toJSON . _dsldsilAddtional
@@ -14462,7 +14464,7 @@ instance FromJSON TableListTablesItemLabels where
         parseJSON
           = withObject "TableListTablesItemLabels"
               (\ o ->
-                 TableListTablesItemLabels' <$> (parseJSONObject o))
+                 TableListTablesItemLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON TableListTablesItemLabels where
         toJSON = toJSON . _tltilAddtional

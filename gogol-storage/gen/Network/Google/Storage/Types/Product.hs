@@ -19,6 +19,9 @@ module Network.Google.Storage.Types.Product where
 
 import Network.Google.Prelude
 import Network.Google.Storage.Types.Sum
+import Data.Aeson.Key
+import Data.Aeson.KeyMap
+import Data.HashMap.Strict
 
 -- | The owner of the object. This will always be the uploader of the object.
 --
@@ -712,7 +715,7 @@ omAddtional
 instance FromJSON ObjectMetadata where
         parseJSON
           = withObject "ObjectMetadata"
-              (\ o -> ObjectMetadata' <$> (parseJSONObject o))
+              (\ o -> ObjectMetadata' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON ObjectMetadata where
         toJSON = toJSON . _omAddtional
@@ -975,7 +978,7 @@ blAddtional
 instance FromJSON BucketLabels where
         parseJSON
           = withObject "BucketLabels"
-              (\ o -> BucketLabels' <$> (parseJSONObject o))
+              (\ o -> BucketLabels' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON BucketLabels where
         toJSON = toJSON . _blAddtional
@@ -2244,7 +2247,7 @@ cpAddtional
 instance FromJSON ChannelParams where
         parseJSON
           = withObject "ChannelParams"
-              (\ o -> ChannelParams' <$> (parseJSONObject o))
+              (\ o -> ChannelParams' <$> (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON ChannelParams where
         toJSON = toJSON . _cpAddtional
@@ -3826,7 +3829,7 @@ instance FromJSON NotificationCustom_attributes where
           = withObject "NotificationCustomAttributes"
               (\ o ->
                  NotificationCustom_attributes' <$>
-                   (parseJSONObject o))
+                   (parseJSONObject $ mapKeys toText $ toHashMap o))
 
 instance ToJSON NotificationCustom_attributes where
         toJSON = toJSON . _ncAddtional
